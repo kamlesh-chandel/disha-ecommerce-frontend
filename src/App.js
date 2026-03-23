@@ -16,13 +16,16 @@ const App = () => {
   // Function to handle form submission from Contact.js
   const handleFormSubmit = async (formData) => {
     try {
-      const response = await fetch("http://localhost:5000/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://disha-ecommerce-backend.onrender.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -47,7 +50,12 @@ const App = () => {
         <Route path="/jewellery" element={<Jewellery />} />
         <Route
           path="/contact"
-          element={<Contact onFormSubmit={handleFormSubmit} responseMessage={responseMessage} />}
+          element={
+            <Contact
+              onFormSubmit={handleFormSubmit}
+              responseMessage={responseMessage}
+            />
+          }
         />
         <Route path="/login" element={<Login />} />
       </Routes>

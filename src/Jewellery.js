@@ -7,7 +7,7 @@ const Jewellery = () => {
   // 📥 FETCH PRODUCTS
   // =============================
   const fetchProducts = () => {
-    fetch("http://localhost:5000/jewellery")
+    fetch("https://disha-ecommerce-backend.onrender.com/jewellery")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch data from server");
         return res.json();
@@ -77,7 +77,7 @@ const Jewellery = () => {
                     </button>
                   </div>
                 </div>
-              ) : null
+              ) : null,
             )
           ) : (
             <p>No products available</p>

@@ -10,19 +10,22 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://disha-ecommerce-backend.onrender.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         },
-        body: JSON.stringify({ email, password }),
-      });
+      );
 
       const result = await response.json();
 
       if (response.ok) {
-        
-        window.location.href = "http://localhost:5000/table";
+        window.location.href =
+          "https://disha-ecommerce-backend.onrender.com/table";
       } else {
         setError(result.message || "Invalid login credentials");
       }
@@ -40,19 +43,13 @@ const Login = () => {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <h2 style={{ textAlign: "center", color: "#111112ff" }}>
-        Login
-      </h2>
+      <h2 style={{ textAlign: "center", color: "#111112ff" }}>Login</h2>
 
       <form
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column" }}
       >
-        {error && (
-          <p style={{ color: "red", textAlign: "center" }}>
-            {error}
-          </p>
-        )}
+        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
 
         <input
           type="email"
@@ -104,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;
